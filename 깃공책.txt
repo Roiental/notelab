@@ -1,0 +1,176 @@
+
+[ Repository ]
+https://github.com/Roiental/memolab.git
+
+********************************************************************************
+-Version control ->  Backup -> Collaboration
+
+1. Global 설정
+$ git config list --system
+$ git config list --global
+$ git config list --local
+
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com  
+#$ git config --global core.editor emacs
+$ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -nosessio$ n"
+$ git config user.name
+$ git help config
+$ git add -h
+
+git config --global --add safe.directory D:/lab
+
+*옵션에 따라 단계별로 취소하려면?
+git reset --soft HEAD^
+  -커밋을 취소하고 작업을 staged 상태로 작업 디렉토리에 보관합니다.
+git reset --mixed HEAD^
+  -커밋을 취소하고 파일을 unstaged 상태로 작업 디렉토리에 보관합이다.
+git reset HEAD^
+  - mixed 옵션을 사용하 때와 같이, 커밋을 취소하고 파일을 unstaged 상태로 작업 디렉토리에 보관힙니다.
+git reset --hard [커밋해시]
+  - 
+*커밋 변경 이력 취고하기
+  - git revert
+
+
+
+2.추가
+git status
+xxx
+
+
+***************************************************************************
+git@github.com:Roiental/baek-wh01.git
+https://github.com/Roiental/baek-wh01.git
+
+================================================================================================
+
+…or create a new repository on the command line
+echo "# baek-wh01" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Roiental/baek-wh01.git
+git push -u origin main
+
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/Roiental/baek-wh01.git
+git branch -M main  #With a -m or -M option, <oldbranch> will be renamed to <newbranch>
+git push -u origin main
+
+================================================================================================
+
+================================================================================================
+
+ ###파일 등록 취소
+   - tracked 상태  --> untracked 상태로 변경.
+   - unstage상태로 변경 : rm / reset
+   -커밋전 : rm --caches
+   -한번이라도 커밋했으면 :  reset 을 사용해야 함.
+     ex.  git reset HEAD 공책/깃공책.txt
+
+###등록 된 파일 이름이 변경되었을 때 : git mv  파일이름 새파일이름
+==============================================================
+### 새로운 로컬 저장소를 생성하고 원격 저장소를 연결하는 방법.
+1) 로컬디렉토리 생성 및 git init .
+2) 소개 페이지생성 : echo "sdfasd" >> README.md
+3)git add README.md
+4)git commit 
+
+원격저장소 확인 : git remote -v
+rogin은 원격 서버에 대한 별칭. 긴 원격서버 URL입력 불편.
+git remote add 원격저장소별칭 원격저장소 URL
+ ->  git remote add ogn https://github.com/Roiental/baek-wh01.git
+원격저장소 
+  : fetch(서버에서 가지고 오는 동작)
+  : push(원격저장소에 commit된 파일들을 서버로 전송(업로드)하는 동작)
+ 
+$git remote show
+$ git remote rename ogn origin2
+$ git remote -v
+
+###원격서버 삭제
+$ git remote rm origin2
+PUSH
+
+ 
+
+
+#git clone <url> 명령으로 저장소를 Clone 한다.
+
+$ git clone https://github.com/libgit2/libgit2
+$ git clone https://github.com/libgit2/libgit2 mylibgit
+
+#log/ 디렉토리에 있는 .log 파일을 모두 삭제한다
+$ git rm log/\*.log
+$ git log -p -2
+
+#이렇게 --amend 옵션으로 커밋을 고치는 작업은, 추가로 작업한 일이 작다고 하더라도 이전의
+#커밋을 완전히 새로 고쳐서 새 커밋으로 변경하는 것을 의미한다. 이전의 커밋은 일어나지 않은 일이
+#되는 것이고 당연히 히스토리에도 남지 않는다.
+#--amend 옵션으로 커밋을 고치는 작업이 주는 장점은 마지막 커밋 작업에서 아주 살짝 뭔가 빠뜨린
+#것을 넣거나 변경하는 것을 새 커밋으로 분리하지 않고 하나의 커밋에서 처리하는 것이다. “앗차, 빠진
+#파일 넣었음”, “이전 커밋에서 오타 살짝 고침” 등의 커밋을 만들지 않겠다는 말이다.
+
+$ git commit --amend -m "...."
+
+# 저장소를 Clone 하면 `origin`이라는 리모트 저장소가 자동으로 등록되기 때문에 `origin`이라는 이름을 볼 수 있다.
+
+#리모트 저장소 추가하기
+    - https://github.com/Roiental/wh.git
+
+…or create a new repository on the command line
+echo "# tgt" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Roiental/tgt.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/Roiental/tgt.git
+
+git branch -M main
+git push -u origin main
+
+
+$ git log --pretty=oneline
+$ git push origin v1.5
+
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+$ git config --global alias.unstage 'reset HEAD --'
+
+
+$ certutil -hashfile C:\example.txt SHA1   #SHA256 
+$ git cat-file -p a3234...
+$ git ls-tree main  #branch name
+
+>> 20251015 <<
+HEAD는 기본적으로 현재 작업 중인 브랜치의 최신 커밋을 가리키는 일종의 표시입니다
+
+1 | 클론(clone): 원격 저장소를 복제하기
+
+2 | 푸시(push): 원격 저장소에 밀어넣기
+
+3 | 패치(fetch): 원격 저장소를 일단 가져만 오기
+
+4 | 풀(pull): 원격 저장소를 가져와서 합치기
+
+
+
+
+
+
+
+
+
+
+
+
+
